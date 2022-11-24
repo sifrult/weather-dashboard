@@ -1,0 +1,25 @@
+content {
+    display: flex;
+    justify-content: space-around;
+}
+
+header {
+    border: 1px solid orange;
+    text-align: center;
+}
+
+#search-city {
+    border: 1px solid red;
+}
+
+#previous-searches {
+    border: 1px solid green;
+}
+
+#current-weather {
+    border: 1px solid blue;
+}
+
+#forecast {
+    border: 1px solid black;
+}
