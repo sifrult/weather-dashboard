@@ -1,25 +1,56 @@
-content {
-    display: flex;
-    justify-content: space-around;
+/* Main */
+:root {
+    --eggshell: #EAE7DC;
+    --vanilla: #D8C3A5;
+    --taupe: #8E8D8A;
+    --light-red: #E98074;
+    --dark-red: #E85A4F;
 }
 
+body {
+    background-color: var(--eggshell);
+}
+
+/* Header */
 header {
     border: 1px solid orange;
+    height: fit-content;
+    width: 100%;
+    padding: 15px;
     text-align: center;
 }
 
-#search-city {
-    border: 1px solid red;
+h1 {
+    font-size: 250%;
 }
 
+/* Content area */
+content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Search city area */
+#search-city {
+    border: 1px solid red;
+    align-content: center;
+}
+
+h2 {
+    font-size: 150%;
+}
+
+/* Previous searches are */
 #previous-searches {
     border: 1px solid green;
 }
 
+/* Current weather area */
 #current-weather {
     border: 1px solid blue;
 }
 
+/* Forecast area */
 #forecast {
     border: 1px solid black;
 }
