@@ -19,13 +19,12 @@ function searchWeather(event) {
     if (srchTxt === '') {
         return;
     }
-console.log(srchTxt)
 
-    // searches.push(srchTxt);
+    searches.push(srchTxt);
     searchText.val('');
 
-    // storeSearches();
-    // addToList();
+    storeSearches();
+    addToList();
 
   }
 
@@ -35,21 +34,21 @@ function addToList() {
     var storedSearches = JSON.parse(localStorage.getItem("searches"));
     console.log(storedSearches);
 
-    // searchList.innerHTML = "";
+    searchList.innerHTML = "";
 
-    // for (var i = 0; i < searches.length; i++) {
-    //     var search = searches[i];
+    for (var i = 0; i < searches.length; i++) {
+        var search = searches[i];
 
-    //     var li = document.createElement('li');
-    //     li.textContent = search;
-    //     li.setAttribute("data-index", i);
+        var li = document.createElement('li');
+        li.textContent = search;
+        li.setAttribute("data-index", i);
 
-    //     var button = document.createElement('button');
-    //     button.textContent = "x";
+        var button = document.createElement('button');
+        button.textContent = "x";
 
-    //     li.appendChild(button);
-    //     searchList.appendChild(li);
-    // }
+        li.append(button);
+        searchList.append(li);
+    }
 }
 
 // Locally stores the entry in text box
@@ -57,7 +56,6 @@ function addToList() {
 function storeSearches(){
 
     localStorage.setItem("searches", JSON.stringify(searches));
-    console.log(searches)
 
 }
 
