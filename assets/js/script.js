@@ -6,13 +6,13 @@ var currentWeather = $('#current-weather');
 
 var searchList = $('#search-list');
 
+
 var searches = [];
 var i = 0;
+
 // Adds content to the previous searches section
 function addToList() {
     var storedSearches = JSON.parse(localStorage.getItem("searches"));
-
-    console.log(storedSearches);
 
     if (storedSearches !== null) {
         searches = storedSearches;
@@ -29,6 +29,11 @@ function addToList() {
 
         searchList.append(button);
     }
+
+// Code to find the lat and long of a city
+var apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + search.replace(" ", "_") + '&limit=5&appid=3081b8e03e427d8a8b2f19d6ac27558d';
+console.log(apiUrl);
+
 }
 
 // Locally stores the entry in text box
@@ -48,10 +53,11 @@ searchBtn.on('click', function(e) {
     searches.push(srchTxt);
     searchText.val('');
 
+
+
     storeSearches();
     addToList();
   })
-
 
 // Pressing 'enter' triggers the search
 searchText.on('keypress', function(event){
