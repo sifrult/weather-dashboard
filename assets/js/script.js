@@ -32,7 +32,15 @@ function addToList() {
 
 // Code to find the lat and long of a city
 var apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + search.replace(" ", "_") + '&limit=5&appid=3081b8e03e427d8a8b2f19d6ac27558d';
-console.log(apiUrl);
+
+fetch(apiUrl)
+    .then (function(response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data[0].lat)
+        console.log(data[0].lon)
+    })
 
 }
 
