@@ -6,6 +6,7 @@
     --light-red: #E98074;
     --dark-red: #E85A4F;
     --light-gray: #E0DED2;
+    --dark-gray: #646560;
 }
 
 body {
@@ -80,10 +81,8 @@ li > button:hover {
 
 /* Previous searches are */
 #previous-searches {
-    border: 1px solid green;
     text-align: center;
     padding: 10px;
-    margin-top: 20px;
 }
 
 #previous-searches > ul {
@@ -114,6 +113,12 @@ li > button {
 /* Current weather area */
 #current-weather {
     border: 1px solid blue;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    text-align: center;
+    color: var(--dark-gray)
 }
 
 /* Forecast area */

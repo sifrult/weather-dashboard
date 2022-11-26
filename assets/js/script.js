@@ -2,6 +2,9 @@ var searchText = $('#search-text');
 
 var city = $('.city');
 var date = $('.date');
+var todayTemp = $('.current_temp');
+var todayWind = $('.current_wind');
+var todayHum = $('.current_humidity');
 
 var searchBtn = $("#search-button");
 
@@ -57,15 +60,18 @@ fetch(apiUrl)
 
 
 // Find weather from lat and lon
-var weatherApiUrl = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon='+ lon + '&appid=' + api;
-console.log(weatherApiUrl)
-// fetch(weatherApiUrl)
-//     .then (function(response) {
-//         return response.json();
-//     })
-//     .then(function(data) {
-//          console.log(data);
-//     })
+var weatherApiUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon='+ lon + '&appid=' + api + '&units=imperial';
+
+fetch(weatherApiUrl)
+    .then (function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log(data);
+        todayTemp.text('Temp: ' + data.main.temp + '°F');
+        todayWind.text('Wind: ' + data.wind.speed + 'MPH');
+        todayHum.text('Humidity: ' + data.main.humidity + '%');
+    })
 
     })
 
