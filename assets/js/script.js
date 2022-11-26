@@ -23,11 +23,11 @@ function addToList() {
     for (; i < searches.length; i++) {
         var search = searches[i];
 
-        var li = $('<li>');
-        li.text(search);
-        li.attr("data-index", i);
+        var button = $('<button>');
+        button.text(search);
+        button.attr("data-index", i);
 
-        searchList.append(li);
+        searchList.append(button);
     }
 }
 

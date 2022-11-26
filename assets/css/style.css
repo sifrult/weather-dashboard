@@ -84,17 +84,16 @@ h2 {
     margin-top: 20px;
 }
 
-#previous-searches > ul {
+#previous-searches > p > button {
     font-size: 23px;
+    color: var(--dark-red);
+    border: none;
+    background-color: #E0DED2;
+    border-radius: 1.5rem;
+    padding: 5px 15px;
+    margin: 3px;
 }
 
-li button{
-   margin-left: 5px;
-   border-radius: 50%;
-
-   border: none;
-   margin-top: 20px;
-}
 
 /* Current weather area */
 #current-weather {
