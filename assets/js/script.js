@@ -1,5 +1,7 @@
 var searchText = $('#search-text');
+
 var city = $('.city');
+var date = $('.date');
 
 var searchBtn = $("#search-button");
 
@@ -7,7 +9,7 @@ var currentWeather = $('#current-weather');
 
 var searchList = $('#search-list');
 
-
+var api = '3081b8e03e427d8a8b2f19d6ac27558d';
 var searches = [];
 
 
@@ -32,7 +34,7 @@ function addToList() {
         li.attr('data-index', i);
 
         var button = $('<button>');
-        button.text('x');
+        button.text('×');
 
         li.append(button);
         searchList.append(li);
@@ -41,21 +43,22 @@ function addToList() {
     }
 
 // Code to find the lat and lon of a city
-// var apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + search.replace(" ", "_") + '&limit=5&appid=3081b8e03e427d8a8b2f19d6ac27558d';
+var apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + search.replace(" ", "_") + '&limit=5&appid=' + api;
 
-// fetch(apiUrl)
-//     .then (function(response) {
-//         return response.json();
-//     })
-//     .then(function (data) {
-//         lat = (data[0].lat);
-//         lon = (data[0].lon);
-//         city.text(data[0].name);
+fetch(apiUrl)
+    .then (function(response) {
+        return response.json();
+    })
+    .then(function (data) {
+        lat = (data[0].lat);
+        lon = (data[0].lon);
+        city.text(data[0].name);
+        date.text(dayjs().format('D/MM/YYYY'));
 
 
 // Find weather from lat and lon
-// var weatherApiUrl = 'http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + lat + '&lon='+ lon + '&appid=3081b8e03e427d8a8b2f19d6ac27558d'
-
+var weatherApiUrl = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon='+ lon + '&appid=' + api;
+console.log(weatherApiUrl)
 // fetch(weatherApiUrl)
 //     .then (function(response) {
 //         return response.json();
@@ -64,7 +67,7 @@ function addToList() {
 //          console.log(data);
 //     })
 
-//     })
+    })
 
 }
 
