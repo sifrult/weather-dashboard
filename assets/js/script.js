@@ -33,12 +33,15 @@ function addToList() {
         var search = searches[i];
 
         var li = $('<li>');
-        li.text(search);
-        li.attr('data-index', i);
-
+        var link = $('<a>');
         var button = $('<button>');
+
+        link.text(search);
+        link.attr('href', '#');
+        li.attr('data-index', i);
         button.text('×');
 
+        li.append(link);
         li.append(button);
         searchList.append(li);
     }
@@ -54,9 +57,19 @@ fetch(apiUrl)
         lat = (data[0].lat);
         lon = (data[0].lon);
         city.text(data[0].name);
-        date.text(dayjs().format('MM/D/YYYY'));
-        $('#tomorrow').text(dayjs().add(1, 'day').format('MM/D/YYYY'));
-        $('#tomorrow_1').text(dayjs().add(2, 'day').format('MM/D/YYYY'));
+
+// Display the dates
+date.text(dayjs().format('MM/D/YYYY'));
+var oneDay = dayjs().add(1, 'day').format('MM/D/YYYY');
+var twoDays = dayjs().add(2, 'day').format('MM/D/YYYY');
+var threeDays = dayjs().add(3, 'day').format('MM/D/YYYY');
+var fourDays = dayjs().add(4, 'day').format('MM/D/YYYY');
+var fiveDays = dayjs().add(5, 'day').format('MM/D/YYYY');
+$('#one_day').text(oneDay);
+$('#two_days').text(twoDays);
+$('#three_days').text(threeDays);
+$('#four_days').text(fourDays);
+$('#five_days').text(fiveDays);
 
 // Find todays weather from lat and lon
 var todayWeatherUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon='+ lon + '&appid=' + api + '&units=imperial';
@@ -67,7 +80,7 @@ fetch(todayWeatherUrl)
     })
     .then(function(data) {
         todayTemp.text('Temp: ' + data.main.temp + '°F');
-        todayWind.text('Wind: ' + data.wind.speed + 'MPH');
+        todayWind.text('Wind: ' + data.wind.speed + ' MPH');
         todayHum.text('Humidity: ' + data.main.humidity + '%');
     });
 
@@ -79,7 +92,47 @@ fetch(futureWeatherUrl)
         return response.json();
     })
     .then(function(data) {
-        console.log(data.list[10].dt_txt)
+
+        for ( var i = 0; i < data.list.length; i++) {
+            var date = data.list[i].dt_txt
+            var date1 = date.substr(0,10);
+
+            var noon = date.substr(11,19);
+
+            var reformatDate = dayjs(date1).format('MM/D/YYYY');
+
+            if (reformatDate === oneDay && noon === '12:00:00') {
+                $('.one_day_temp').text('Temp: ' + data.list[i].main.temp + '°F');
+                $('.one_day_wind').text('Wind: ' + data.list[i].wind.speed + ' MPH');
+                $('.one_day_hum').text('Humidity: ' + data.list[i].main.humidity + '%');
+            }
+
+            if (reformatDate === twoDays && noon === '12:00:00') {
+                $('.two_days_temp').text('Temp: ' + data.list[i].main.temp + '°F');
+                $('.two_days_wind').text('Wind: ' + data.list[i].wind.speed + ' MPH');
+                $('.two_days_hum').text('Humidity: ' + data.list[i].main.humidity + '%');
+            }
+
+            if (reformatDate === threeDays && noon === '12:00:00') {
+                $('.three_days_temp').text('Temp: ' + data.list[i].main.temp + '°F');
+                $('.three_days_wind').text('Wind: ' + data.list[i].wind.speed + ' MPH');
+                $('.three_days_hum').text('Humidity: ' + data.list[i].main.humidity + '%');
+            }
+
+            if (reformatDate === fourDays && noon === '12:00:00') {
+                $('.four_days_temp').text('Temp: ' + data.list[i].main.temp + '°F');
+                $('.four_days_wind').text('Wind: ' + data.list[i].wind.speed + ' MPH');
+                $('.four_days_hum').text('Humidity: ' + data.list[i].main.humidity + '%');
+            }
+
+            if (reformatDate === fiveDays && noon === '12:00:00') {
+                $('.five_days_temp').text('Temp: ' + data.list[i].main.temp + '°F');
+                $('.five_days_wind').text('Wind: ' + data.list[i].wind.speed + ' MPH');
+                $('.five_days_hum').text('Humidity: ' + data.list[i].main.humidity + '%');
+            }
+        }
+
+
     });
     })
 
@@ -130,6 +183,7 @@ searchText.on('keypress', function(event){
     }
 });
 
+// Close previous search
 searchList.on('click', function(event) {
     var element = $(event.target);
 
