@@ -41,8 +41,6 @@ function addToList() {
 
         li.append(button);
         searchList.append(li);
-
-
     }
 
 // Code to find the lat and lon of a city
@@ -56,23 +54,33 @@ fetch(apiUrl)
         lat = (data[0].lat);
         lon = (data[0].lon);
         city.text(data[0].name);
-        date.text(dayjs().format('D/MM/YYYY'));
+        date.text(dayjs().format('MM/D/YYYY'));
+        $('#tomorrow').text(dayjs().add(1, 'day').format('MM/D/YYYY'));
+        $('#tomorrow_1').text(dayjs().add(2, 'day').format('MM/D/YYYY'));
 
+// Find todays weather from lat and lon
+var todayWeatherUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon='+ lon + '&appid=' + api + '&units=imperial';
 
-// Find weather from lat and lon
-var weatherApiUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon='+ lon + '&appid=' + api + '&units=imperial';
-
-fetch(weatherApiUrl)
+fetch(todayWeatherUrl)
     .then (function(response) {
         return response.json();
     })
     .then(function(data) {
-        console.log(data);
         todayTemp.text('Temp: ' + data.main.temp + '°F');
         todayWind.text('Wind: ' + data.wind.speed + 'MPH');
         todayHum.text('Humidity: ' + data.main.humidity + '%');
-    })
+    });
 
+// Find future weather from lat and lon
+var futureWeatherUrl = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon='+ lon + '&appid=' + api + '&units=imperial';
+
+fetch(futureWeatherUrl)
+    .then (function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log(data.list[10].dt_txt)
+    });
     })
 
 }
@@ -95,7 +103,7 @@ searchBtn.on('click', function(e) {
     searches.push(srchTxt);
     searchText.val('');
 
-
+    $('.hr').css('display', 'block');
 
     storeSearches();
     addToList();
@@ -114,6 +122,8 @@ searchText.on('keypress', function(event){
 
         searches.push(srchTxt);
         searchText.val('');
+
+        $('.hr').css('display', 'block');
 
         storeSearches();
         addToList();

@@ -34,6 +34,12 @@ content {
     flex-direction: column;
 }
 
+hr {
+    width: 60%;
+    margin: auto;
+    border: 1px dashed var(--vanilla);
+}
+
 /* Search city area */
 #search-city {
     text-align: center;
@@ -112,16 +118,22 @@ li > button {
 
 /* Current weather area */
 #current-weather {
-    border: 1px solid blue;
-    margin-top: 10px;
+    margin: 10px 0;
     display: flex;
     justify-content: center;
-    font-size: 30px;
+    font-size: 40px;
     text-align: center;
     color: var(--dark-gray)
+}
+
+.date, .current_temp, .current_wind, .current_humidity {
+    font-size: 25px;
+    color: var(--light-red);
+    font-weight: 500;
 }
 
 /* Forecast area */
 #forecast {
     border: 1px solid black;
+    margin-top: 10px;
 }
