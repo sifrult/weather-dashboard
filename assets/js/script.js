@@ -132,6 +132,7 @@ searchBtn.on('click', function(e) {
     searchText.val('');
 
     $('.hr').css('display', 'block');
+    $('#forecast-title').css('display', 'block');
 
     searchList.empty();
 
@@ -168,6 +169,7 @@ searchText.on('keypress', function(event){
         searchText.val('');
 
         $('.hr').css('display', 'block');
+        $('#forecast-title').css('display', 'block');
 
         searchList.empty();
 

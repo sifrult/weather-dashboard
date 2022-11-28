@@ -28,13 +28,6 @@ h1 {
     font-size: 300%;
 }
 
-#today_icon {
-    width: 40px;
-}
-
-#one_day_icon, #two_days_icon, #three_days_icon, #four_days_icon, #five_days_icon {
-    width: 30px;
-}
 /* Content area */
 content {
     display: flex;
@@ -47,7 +40,13 @@ hr {
     border: 1px dashed var(--vanilla);
 }
 
+#today_icon {
+    width: 40px;
+}
 
+#one_day_icon, #two_days_icon, #three_days_icon, #four_days_icon, #five_days_icon {
+    width: 30px;
+}
 
 /* Search city area */
 #search-city {
@@ -56,8 +55,7 @@ hr {
     margin-top: 20px;
 }
 
-#search-city > p > input {
-
+#search-text {
     padding: 5px;
     margin: 10px;
     border: none;
@@ -144,4 +142,46 @@ a:hover {
     padding: 10px;
     font-size: 20px;
     line-height: 25px;
+}
+
+@media screen and (min-width: 500px) {
+    content {
+        /* display: flex; */
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    aside {
+        width: 40%;
+    }
+
+    container {
+        width: 60%;
+    }
+
+    #search-text {
+        width: 80%;
+    }
+
+    .hr_hide {
+        border: none;
+    }
+
+    #forecast {
+        display: flex;
+        margin-right: 10px;
+    }
+
+    #forecast > div {
+        padding: 0 10px;
+    }
+
+    #forecast > div:empty{
+        border: none;
+    }
+
+    #forecast-title {
+        text-align: center;
+        padding: 5px;
+    }
 }
