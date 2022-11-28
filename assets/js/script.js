@@ -1,22 +1,16 @@
 var searchText = $('#search-text');
-
 var city = $('.city');
 var date = $('.date');
 var todayTemp = $('.current_temp');
 var todayWind = $('.current_wind');
 var todayHum = $('.current_humidity');
-
 var searchBtn = $("#search-button");
-
 var currentWeather = $('#current-weather');
-
 var searchList = $('#search-list');
-
 var api = '3081b8e03e427d8a8b2f19d6ac27558d';
-
 var searches = [];
 
-// Runs the whole page
+// Renders items on the page
 function renderItems(search) {
 
 // Code to find the lat and lon of a city

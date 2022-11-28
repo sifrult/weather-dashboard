@@ -28,6 +28,13 @@ h1 {
     font-size: 300%;
 }
 
+#today_icon {
+    width: 40px;
+}
+
+#one_day_icon, #two_days_icon, #three_days_icon, #four_days_icon, #five_days_icon {
+    width: 30px;
+}
 /* Content area */
 content {
     display: flex;
@@ -39,6 +46,8 @@ hr {
     margin: auto;
     border: 1px dashed var(--vanilla);
 }
+
+
 
 /* Search city area */
 #search-city {
@@ -88,13 +97,7 @@ li > button:hover {
 /* Previous searches are */
 #previous-searches {
     text-align: center;
-    padding: 10px;
-}
-
-#previous-searches > ul {
-    font-size: 30px;
-    color: var(--dark-red);
-    padding: 5px;
+    margin-bottom: 10px;
 }
 
 li {
@@ -103,18 +106,16 @@ li {
     justify-content: center;
     align-items: center;
 }
-
-li > button {
-    background-color: var(--light-gray);
+a {
+    font-size: 30px;
     color: var(--dark-red);
-    border: none;
-    margin-left: 7px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    line-height: 30px;
+    padding: 5px;
+    text-decoration: none;
 }
-
+a:hover {
+    font-weight: bolder;
+    color: var(--vanilla);
+}
 
 /* Current weather area */
 #current-weather {
