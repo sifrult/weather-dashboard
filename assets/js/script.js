@@ -14,7 +14,7 @@ var searches = [];
 function renderItems(search) {
 
 // Code to find the lat and lon of a city
-var apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + search.replace(" ", "_") + '&limit=5&appid=' + api;
+var apiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + search.replace(" ", "_") + '&limit=5&appid=' + api;
 
 fetch(apiUrl)
     .then (function(response) {
@@ -39,21 +39,21 @@ $('#four_days').text(fourDays);
 $('#five_days').text(fiveDays);
 
 // Find todays weather from lat and lon
-var todayWeatherUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon='+ lon + '&appid=' + api + '&units=imperial';
+var todayWeatherUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon='+ lon + '&appid=' + api + '&units=imperial';
 
 fetch(todayWeatherUrl)
     .then (function(response) {
         return response.json();
     })
     .then(function(data) {
-        $('#today_icon').attr('src', 'http://openweathermap.org/img/wn/' + (data.weather[0].icon) + '.png').attr('title', data.weather[0].description).attr("alt", data.weather[0].description)
+        $('#today_icon').attr('src', 'https://openweathermap.org/img/wn/' + (data.weather[0].icon) + '.png').attr('title', data.weather[0].description).attr("alt", data.weather[0].description)
         todayTemp.text('Temp: ' + data.main.temp + '°F');
         todayWind.text('Wind: ' + data.wind.speed + ' MPH');
         todayHum.text('Humidity: ' + data.main.humidity + '%');
     });
 
 // Find future weather from lat and lon
-var futureWeatherUrl = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon='+ lon + '&appid=' + api + '&units=imperial';
+var futureWeatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon='+ lon + '&appid=' + api + '&units=imperial';
 
 fetch(futureWeatherUrl)
     .then (function(response) {
@@ -71,7 +71,7 @@ fetch(futureWeatherUrl)
             var reformatDate = dayjs(date1).format('MM/D/YYYY');
 
             if (reformatDate === oneDay && noon === '12:00:00') {
-                $('#one_day_icon').attr('src', 'http://openweathermap.org/img/wn/' + (data.list[i].weather[0].icon) + '.png').attr('title', data.list[i].weather[0].description).attr('alt', data.list[i].weather[0].description)
+                $('#one_day_icon').attr('src', 'https://openweathermap.org/img/wn/' + (data.list[i].weather[0].icon) + '.png').attr('title', data.list[i].weather[0].description).attr('alt', data.list[i].weather[0].description)
                 // $('#one_day_icon').append('<img alt="' + data.list[i].weather[0].description + '" title="' +  + '">')
                 $('.one_day_temp').text('Temp: ' + data.list[i].main.temp + '°F');
                 $('.one_day_wind').text('Wind: ' + data.list[i].wind.speed + ' MPH');
@@ -79,7 +79,7 @@ fetch(futureWeatherUrl)
             }
 
             if (reformatDate === twoDays && noon === '12:00:00') {
-                $('#two_days_icon').attr('src', 'http://openweathermap.org/img/wn/' + (data.list[i].weather[0].icon) + '.png').attr('title', data.list[i].weather[0].description).attr('alt', data.list[i].weather[0].description)
+                $('#two_days_icon').attr('src', 'https://openweathermap.org/img/wn/' + (data.list[i].weather[0].icon) + '.png').attr('title', data.list[i].weather[0].description).attr('alt', data.list[i].weather[0].description)
                 // $('#two_days_icon').append('<img src="http://openweathermap.org/img/wn/' +  + '.png" alt="' + data.list[i].weather[0].description + '" title="' + data.list[i].weather[0].description + '">')
                 $('.two_days_temp').text('Temp: ' + data.list[i].main.temp + '°F');
                 $('.two_days_wind').text('Wind: ' + data.list[i].wind.speed + ' MPH');
@@ -87,7 +87,7 @@ fetch(futureWeatherUrl)
             }
 
             if (reformatDate === threeDays && noon === '12:00:00') {
-                $('#three_days_icon').attr('src', 'http://openweathermap.org/img/wn/' + (data.list[i].weather[0].icon) + '.png').attr('title', data.list[i].weather[0].description).attr('alt', data.list[i].weather[0].description)
+                $('#three_days_icon').attr('src', 'https://openweathermap.org/img/wn/' + (data.list[i].weather[0].icon) + '.png').attr('title', data.list[i].weather[0].description).attr('alt', data.list[i].weather[0].description)
                 // $('#three_days_icon').append('<img src="http://openweathermap.org/img/wn/' + (data.list[i].weather[0].icon) + '.png" alt="' + data.list[i].weather[0].description + '" title="' + data.list[i].weather[0].description + '">')
                 $('.three_days_temp').text('Temp: ' + data.list[i].main.temp + '°F');
                 $('.three_days_wind').text('Wind: ' + data.list[i].wind.speed + ' MPH');
@@ -95,7 +95,7 @@ fetch(futureWeatherUrl)
             }
 
             if (reformatDate === fourDays && noon === '12:00:00') {
-                $('#four_days_icon').attr('src', 'http://openweathermap.org/img/wn/' + (data.list[i].weather[0].icon) + '.png').attr('title', data.list[i].weather[0].description).attr('alt', data.list[i].weather[0].description)
+                $('#four_days_icon').attr('src', 'https://openweathermap.org/img/wn/' + (data.list[i].weather[0].icon) + '.png').attr('title', data.list[i].weather[0].description).attr('alt', data.list[i].weather[0].description)
                 // $('#four_days_icon').append('<img src="http://openweathermap.org/img/wn/' + (data.list[i].weather[0].icon) + '.png" alt="' + data.list[i].weather[0].description + '" title="' + data.list[i].weather[0].description + '">')
                 $('.four_days_temp').text('Temp: ' + data.list[i].main.temp + '°F');
                 $('.four_days_wind').text('Wind: ' + data.list[i].wind.speed + ' MPH');
@@ -103,7 +103,7 @@ fetch(futureWeatherUrl)
             }
 
             if (reformatDate === fiveDays && noon === '12:00:00') {
-                $('#five_days_icon').attr('src', 'http://openweathermap.org/img/wn/' + (data.list[i].weather[0].icon) + '.png').attr('title', data.list[i].weather[0].description).attr('alt', data.list[i].weather[0].description)
+                $('#five_days_icon').attr('src', 'https://openweathermap.org/img/wn/' + (data.list[i].weather[0].icon) + '.png').attr('title', data.list[i].weather[0].description).attr('alt', data.list[i].weather[0].description)
                 // $('#five_days_icon').append('<img src="http://openweathermap.org/img/wn/' + (data.list[i].weather[0].icon) + '.png" alt="' + data.list[i].weather[0].description + '" title="' + data.list[i].weather[0].description + '">')
                 $('.five_days_temp').text('Temp: ' + data.list[i].main.temp + '°F');
                 $('.five_days_wind').text('Wind: ' + data.list[i].wind.speed + ' MPH');
