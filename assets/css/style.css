@@ -51,13 +51,12 @@ hr {
 /* Search city area */
 #search-city {
     text-align: center;
-    padding: 10px;
-    margin-top: 20px;
+    margin: 20px 0;
 }
 
 #search-text {
     padding: 5px;
-    margin: 10px;
+    margin: 10px 0;
     border: none;
     text-align: center;
     background-color: var(--light-gray);
@@ -138,13 +137,18 @@ a:hover {
     color: var(--dark-gray)
 }
 
+#forecast-title {
+        text-align: center;
+        padding: 5px;
+    }
+
 #forecast > div {
     padding: 10px;
     font-size: 20px;
     line-height: 25px;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 885px) {
     content {
         /* display: flex; */
         flex-direction: row;
@@ -180,8 +184,5 @@ a:hover {
         border: none;
     }
 
-    #forecast-title {
-        text-align: center;
-        padding: 5px;
-    }
+
 }

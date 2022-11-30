@@ -62,7 +62,6 @@ fetch(futureWeatherUrl)
 
             if (reformatDate === oneDay && noon === '12:00:00') {
                 $('#one_day_icon').attr('src', `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`).attr('title', data.list[i].weather[0].description).attr('alt', data.list[i].weather[0].description)
-                // $('#one_day_icon').append('<img alt="' + data.list[i].weather[0].description + '" title="' +  + '">')
                 $('.one_day_temp').text(`Temp: ${data.list[i].main.temp}°F`);
                 $('.one_day_wind').text(`Wind: ${data.list[i].wind.speed} MPH`);
                 $('.one_day_hum').text(`Humidity: ${data.list[i].main.humidity}%`);
@@ -70,7 +69,6 @@ fetch(futureWeatherUrl)
 
             if (reformatDate === twoDays && noon === '12:00:00') {
                 $('#two_days_icon').attr('src', `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`).attr('title', data.list[i].weather[0].description).attr('alt', data.list[i].weather[0].description)
-                // $('#two_days_icon').append('<img src="http://openweathermap.org/img/wn/' +  + '.png" alt="' + data.list[i].weather[0].description + '" title="' + data.list[i].weather[0].description + '">')
                 $('.two_days_temp').text(`Temp: ${data.list[i].main.temp}°F`);
                 $('.two_days_wind').text(`Wind: ${data.list[i].wind.speed} MPH`);
                 $('.two_days_hum').text(`Humidity: ${data.list[i].main.humidity}%`);
@@ -78,7 +76,6 @@ fetch(futureWeatherUrl)
 
             if (reformatDate === threeDays && noon === '12:00:00') {
                 $('#three_days_icon').attr('src', `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`).attr('title', data.list[i].weather[0].description).attr('alt', data.list[i].weather[0].description)
-                // $('#three_days_icon').append('<img src="http://openweathermap.org/img/wn/' + (data.list[i].weather[0].icon) + '.png" alt="' + data.list[i].weather[0].description + '" title="' + data.list[i].weather[0].description + '">')
                 $('.three_days_temp').text(`Temp: ${data.list[i].main.temp}°F`);
                 $('.three_days_wind').text(`Wind: ${data.list[i].wind.speed} MPH`);
                 $('.three_days_hum').text(`Humidity: ${data.list[i].main.humidity}%`);
@@ -86,7 +83,6 @@ fetch(futureWeatherUrl)
 
             if (reformatDate === fourDays && noon === '12:00:00') {
                 $('#four_days_icon').attr('src', `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`).attr('title', data.list[i].weather[0].description).attr('alt', data.list[i].weather[0].description)
-                // $('#four_days_icon').append('<img src="http://openweathermap.org/img/wn/' + (data.list[i].weather[0].icon) + '.png" alt="' + data.list[i].weather[0].description + '" title="' + data.list[i].weather[0].description + '">')
                 $('.four_days_temp').text(`Temp: ${data.list[i].main.temp}°F`);
                 $('.four_days_wind').text(`Wind: ${data.list[i].wind.speed} MPH`);
                 $('.four_days_hum').text(`Humidity: ${data.list[i].main.humidity}%`);
@@ -94,7 +90,6 @@ fetch(futureWeatherUrl)
 
             if (reformatDate === fiveDays && noon === '12:00:00') {
                 $('#five_days_icon').attr('src', `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`).attr('title', data.list[i].weather[0].description).attr('alt', data.list[i].weather[0].description)
-                // $('#five_days_icon').append('<img src="http://openweathermap.org/img/wn/' + (data.list[i].weather[0].icon) + '.png" alt="' + data.list[i].weather[0].description + '" title="' + data.list[i].weather[0].description + '">')
                 $('.five_days_temp').text(`Temp: ${data.list[i].main.temp}°F`);
                 $('.five_days_wind').text(`Wind: ${data.list[i].wind.speed} MPH`);
                 $('.five_days_hum').text(`Humidity: ${data.list[i].main.humidity}%`);
