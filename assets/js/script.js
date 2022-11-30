@@ -13,19 +13,8 @@ var searches = [];
 // Renders items on the page
 function renderItems(search) {
 
-// Code to find the lat and lon of a city
-var apiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + search.replace(" ", "_") + '&limit=5&appid=' + api;
-
-fetch(apiUrl)
-    .then (function(response) {
-        return response.json();
-    })
-    .then(function (data) {
-        var lat = (data[0].lat);
-        var lon = (data[0].lon);
-        city.text(data[0].name);
-
 // Display the dates
+
 date.text(dayjs().format('MM/D/YYYY'));
 var oneDay = dayjs().add(1, 'day').format('MM/D/YYYY');
 var twoDays = dayjs().add(2, 'day').format('MM/D/YYYY');
@@ -38,36 +27,37 @@ $('#three_days').text(threeDays);
 $('#four_days').text(fourDays);
 $('#five_days').text(fiveDays);
 
-// Find todays weather from lat and lon
-var todayWeatherUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon='+ lon + '&appid=' + api + '&units=imperial';
+// Find today's weather
+var currentWeather = `https://api.openweathermap.org/data/2.5/weather?q=${search.replace(" ", "+")}&appid=${api}&units=imperial`;
 
-fetch(todayWeatherUrl)
+fetch(currentWeather)
     .then (function(response) {
         return response.json();
     })
-    .then(function(data) {
-        $('#today_icon').attr('src', 'https://openweathermap.org/img/wn/' + (data.weather[0].icon) + '.png').attr('title', data.weather[0].description).attr("alt", data.weather[0].description)
+    .then (function(data) {
+        city.text(data.name);
+        $('#today_icon').attr('src', `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`).attr('title', data.weather[0].description).attr("alt", data.weather[0].description)
         todayTemp.text('Temp: ' + data.main.temp + '°F');
         todayWind.text('Wind: ' + data.wind.speed + ' MPH');
         todayHum.text('Humidity: ' + data.main.humidity + '%');
-    });
+    })
+
+// Find weather for the next 5 days
+
 
 // Find future weather from lat and lon
-var futureWeatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon='+ lon + '&appid=' + api + '&units=imperial';
+var futureWeatherUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${search.replace(" ", "+")}&appid=${api}&units=imperial`;
+console.log (futureWeatherUrl)
 
 fetch(futureWeatherUrl)
     .then (function(response) {
         return response.json();
     })
-    .then(function(data) {
-
+    .then (function(data) {
         for ( var i = 0; i < data.list.length; i++) {
             var date = data.list[i].dt_txt
-
             var date1 = date.substr(0,10);
-
             var noon = date.substr(11,19);
-
             var reformatDate = dayjs(date1).format('MM/D/YYYY');
 
             if (reformatDate === oneDay && noon === '12:00:00') {
@@ -111,7 +101,6 @@ fetch(futureWeatherUrl)
             }
         }
     });
-    })
 }
 
 // Locally stores the entry in text box
@@ -196,5 +185,4 @@ searchText.on('keypress', function(event){
 $(document).on('click', 'a', function() {
     var search = $(this).attr('class');
     renderItems(search);
-
 })
