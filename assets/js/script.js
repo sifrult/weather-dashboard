@@ -31,10 +31,9 @@ $('#five_days').text(fiveDays);
 var currentWeather = `https://api.openweathermap.org/data/2.5/weather?q=${search.replace(" ", "+")}&appid=${api}&units=imperial`;
 
 fetch(currentWeather)
-    .then (function(response) {
-        return response.json();
-    })
-    .then (function(data) {
+    .then ((response)=> response.json())
+
+    .then((data)=> {
         city.text(data.name);
         $('#today_icon').attr('src', `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`).attr('title', data.weather[0].description).attr("alt", data.weather[0].description)
         todayTemp.text(`Temp: ${data.main.temp}°F`);
@@ -157,8 +156,7 @@ searchText.on('keypress', function(event){
 
         searchList.empty();
 
-        for (var i = 0; i < searches.length; i++) {
-            var search = searches[i];
+movie.on('keypress', getResults)
 
             var li = $('<li>');
             var link = $('<a>');
@@ -174,7 +172,7 @@ searchText.on('keypress', function(event){
         storeSearches();
         renderItems(search);
     }
-});
+);
 
 // Re-render a previous search
 $(document).on('click', 'a', function() {
